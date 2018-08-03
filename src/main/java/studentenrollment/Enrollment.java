@@ -1,5 +1,7 @@
 package studentenrollment;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,11 +14,13 @@ public class Enrollment {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "studentID", referencedColumnName = "id")
+    @JoinColumn(name = "studentID")
+    @JsonBackReference
     private Student student;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseUnitID", referencedColumnName = "id")
+    @JoinColumn(name = "courseUnitID")
+    @JsonBackReference
     private CourseUnit courseUnit;
 
     private double attendancePercentage;
@@ -24,11 +28,9 @@ public class Enrollment {
 
     public Enrollment() {}
 
-    public Enrollment(Student student, CourseUnit courseUnit, double attendancePercentage, double grade) {
+    public Enrollment(Student student, CourseUnit courseUnit) {
         this.student = student;
         this.courseUnit = courseUnit;
-        this.attendancePercentage = attendancePercentage;
-        this.grade = grade;
     }
 
     public int getId() {

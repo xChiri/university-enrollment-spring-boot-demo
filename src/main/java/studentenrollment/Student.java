@@ -1,5 +1,6 @@
 package studentenrollment;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Student {
     private char gender;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Enrollment> enrollments;
 
     public Student() {}

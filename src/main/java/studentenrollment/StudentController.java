@@ -1,13 +1,12 @@
 package studentenrollment;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 
-@Controller
+@RestController
 public class StudentController {
 
     @Autowired
@@ -29,6 +28,7 @@ public class StudentController {
     public Student create(@RequestBody HashMap<String, String> body)
     {
         Student student = new Student();
+        student.setName(body.get("name"));
         student.setEmail(body.get("email"));
         student.setPhone(body.get("phone"));
         student.setAddress(body.get("address"));

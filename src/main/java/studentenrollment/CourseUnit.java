@@ -1,5 +1,7 @@
 package studentenrollment;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class CourseUnit {
     private int semester;
 
     @OneToMany(mappedBy = "courseUnit", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Enrollment> enrollments;
 
     public CourseUnit() {}
