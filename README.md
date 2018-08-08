@@ -29,4 +29,6 @@ To authenticate, send a request to obtain an access token:
 curl test:secret@localhost:8080/oauth/token -d grant_type=password -d username=chiri -d password=pass
 (change the credentials accordingly)
 
-To obtain a new access token after expiration, send the refresh_token 
+To obtain a new access token after expiration, send the refresh_token using the following request:
+
+curl test:secret@localhost:8080/oauth/token -d grant_type=refresh_token -d refresh_token=8637587b-fb62-4a1f-9b03-3305f13fe399
