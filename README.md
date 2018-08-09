@@ -1,11 +1,15 @@
-# university-enrollment-spring-boot-demo
-
+# University Enrollment Spring Boot + Spring Security + Oauth2 Demo
 <p> A Spring Boot REST API that implements OAuth2 (password grant type) authentication with Spring Security. </p>
 
+== To add a user
 <p> In order to add a user, modify the overriden run() method in the DbPopulator and annotate it with @Component. </p>
+</p> Also, a user can be registered by sending a POST request to /signUp with the username and password contained in the request body.
+
+== Access tokens
 
 <p> To generate the oauth_access_token and oauth_refresh_token tables use the following: 
 
+<code>
 create table oauth_access_token (
   token_id VARCHAR(255),
   token BLOB,
@@ -15,6 +19,7 @@ create table oauth_access_token (
   authentication BLOB,
   refresh_token VARCHAR(255)
 );
+  </code>
 
 create table oauth_refresh_token (
   token_id VARCHAR(255),
