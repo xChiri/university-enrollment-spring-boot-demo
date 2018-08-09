@@ -20,7 +20,6 @@ public class ResourceServer extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/signUp").permitAll()
-                .anyRequest().authenticated()
-                .and().httpBasic();
+                                .anyRequest().authenticated();
     }
 }
