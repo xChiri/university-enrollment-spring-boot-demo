@@ -1,9 +1,8 @@
 package studentenrollment.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +28,11 @@ public class UserController {
 
         System.out.println("User:" + user.getUsername() + " " + user.getPassword());
         return userRepository.save(user);
+    }
+
+    @GetMapping("/loggedInUser")
+    public Object loggedInUser()
+    {
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }

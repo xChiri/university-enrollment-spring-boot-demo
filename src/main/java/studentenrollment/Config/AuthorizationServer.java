@@ -36,7 +36,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    private int tokenExpiration = 80;
+    private int tokenExpiration = 120;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
